@@ -4,12 +4,39 @@ import { Layout } from "@/components/layout/Layout";
 import { Leaf, Heart, Target, Eye, Users, Award } from "lucide-react";
 
 import storyBg from "@/assets/our story.jpg";
+import img2023 from "@/assets/coconut-roll.jpg";
+import img2024 from "@/assets/hero-bg.jpg"; // Placeholder for global
+import imgFuture from "@/assets/coconut-pepper-roll.jpg"; // Placeholder
 
 const timeline = [
-  { year: "2022", title: "The Beginning", description: "Founded Yalico Foods under Connect's food division Vel Traders" },
-  { year: "2023", title: "Product Launch", description: "Introduced India's first healthy, tasty, and crunchy coconut rolls" },
-  { year: "2024", title: "Global Expansion", description: "Expanding to international markets with the 'Make in India' initiative" },
-  { year: "Future", title: "Innovation", description: "Developing new products like Pepper Rolls and Energy Powder" },
+  {
+    year: "2022",
+    title: "Roots of Tradition",
+    description: "Founded under Vel Traders, bringing the legacy of Pollachi's coconut farming to the world.",
+    image: storyBg,
+    color: "from-green-400 to-emerald-600"
+  },
+  {
+    year: "2023",
+    title: "The First Harvest",
+    description: "Launched India's first crunchy Coconut Rolls. A hit with families seeking healthy, tasty treats.",
+    image: img2023,
+    color: "from-amber-300 to-orange-500"
+  },
+  {
+    year: "2024",
+    title: "Global Horizons",
+    description: "Taking 'Make in India' global. Expansion into international markets and new territories.",
+    image: img2024,
+    color: "from-blue-400 to-indigo-600"
+  },
+  {
+    year: "Future",
+    title: "Boundless Innovation",
+    description: "Developing next-gen nutrition: Energy Powders and Spicy Pepper Rolls.",
+    image: imgFuture,
+    color: "from-purple-400 to-pink-600"
+  },
 ];
 
 const values = [
@@ -195,62 +222,86 @@ const About = () => {
               </p>
             </motion.div>
 
-            <div className="relative max-w-5xl mx-auto">
-              {/* Central Line - Desktop */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-border/40 -translate-x-1/2 hidden md:block rounded-full" />
-              <motion.div
-                className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-gold to-primary -translate-x-1/2 hidden md:block rounded-full origin-top"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-              />
+            {/* Visual Storyboard Timeline - Trendier & Attractive */}
+            <section className="py-32 relative overflow-hidden bg-muted/20">
+              {/* Background Elements */}
+              <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+                <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
+                <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gold/20 rounded-full blur-[100px]" />
+              </div>
 
-              <div className="space-y-20">
-                {timeline.map((item, index) => (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.7, delay: index * 0.2 }}
-                    className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                      }`}
-                  >
-                    {/* Content Card */}
-                    <div className={`flex-1 w-full ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                      <div className="group relative">
-                        <div className={`absolute -inset-0.5 bg-gradient-to-r from-gold/30 to-primary/30 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-500`} />
-                        <div className="glass-card p-8 rounded-2xl relative border border-white/10 hover:border-gold/30 transition-all duration-300">
-                          <span className="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary/20 to-gold/20 absolute -top-4 -right-4 select-none pointer-events-none">
+              <div className="container mx-auto px-4 relative">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-24"
+                >
+                  <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
+                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-gold">Odyssey</span>
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Every year is a new chapter in our story of purity and passion.
+                  </p>
+                </motion.div>
+
+                <div className="relative space-y-32">
+                  {/* Connecting Line (Dashed Curve simulation with straight line for mobile compatibility) */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent -translate-x-1/2 hidden md:block" />
+
+                  {timeline.map((item, index) => (
+                    <motion.div
+                      key={item.year}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-10%" }}
+                      transition={{ duration: 0.8 }}
+                      className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 relative ${index % 2 === 0 ? "" : "md:flex-row-reverse"
+                        }`}
+                    >
+                      {/* Timeline Date Marker */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-20 h-20 bg-background rounded-full border-4 border-muted shadow-xl">
+                        <span className="text-sm font-bold text-muted-foreground">{item.year}</span>
+                      </div>
+
+                      {/* Visual Content (Image) */}
+                      <div className="w-full md:w-1/2">
+                        <motion.div
+                          whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 1 : -1 }}
+                          className="group relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl"
+                        >
+                          <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-20 mix-blend-overlay z-10 transition-opacity group-hover:opacity-30`} />
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          {/* Year Overlay for Mobile */}
+                          <div className="absolute top-4 left-4 md:hidden bg-background/90 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                            {item.year}
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      {/* Text Content */}
+                      <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                        <div className="relative inline-block">
+                          <span className={`absolute -top-12 opacity-10 text-9xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br ${item.color} select-none -z-10 ${index % 2 === 0 ? "right-0" : "left-0"}`}>
                             {item.year}
                           </span>
-                          <span className="text-3xl font-display font-bold text-primary mb-2 block">
-                            {item.year}
-                          </span>
-                          <h3 className="text-xl font-display font-bold mb-3 text-foreground">
+                          <h3 className="text-4xl md:text-5xl font-display font-bold mb-6 text-foreground leading-tight">
                             {item.title}
                           </h3>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {item.description}
-                          </p>
                         </div>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {item.description}
+                        </p>
                       </div>
-                    </div>
-
-                    {/* Milestone Marker */}
-                    <div className="relative shrink-0 z-10">
-                      <div className="w-12 h-12 rounded-full bg-background border-4 border-gold shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center">
-                        <div className="w-4 h-4 rounded-full bg-primary" />
-                      </div>
-                    </div>
-
-                    {/* Empty Space for layout balance */}
-                    <div className="flex-1 hidden md:block" />
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         </section>
 
