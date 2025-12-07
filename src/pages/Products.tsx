@@ -107,29 +107,7 @@ const products = [
     },
     sizes: ["Coming Soon"],
   },
-  {
-    id: "energy-powder",
-    name: "Coconut Energy Powder",
-    tagline: "Coming Soon - Fuel Your Day",
-    emoji: "⚡",
-    image: "from-gold-100 to-gold-200",
-    description: "Future Product: Energizing coconut nutrition powder to fuel your day while being deliciously satisfying.",
-    benefits: [
-      "Energizing",
-      "Nutritious",
-      "Deliciously Satisfying",
-      "Versatile Usage",
-    ],
-    ingredients: "Coconut Powder, Natural Energizers",
-    nutrition: {
-      serving: "Coming Soon",
-      calories: "-",
-      fat: "-",
-      saturated: "-",
-      carbs: "-",
-    },
-    sizes: ["Coming Soon"],
-  },
+
 ];
 
 const Products = () => {
