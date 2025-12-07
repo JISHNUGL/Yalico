@@ -1,10 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
-import { Shield, Sprout } from "lucide-react";
+import { Shield, Sprout, Combine, Sparkles } from "lucide-react";
 import yaliImg from "@/assets/Yali.jpg";
 
 const WhyYalico = () => {
+    const { scrollYProgress } = useScroll();
+    const yVideo = useTransform(scrollYProgress, [0, 1], [0, -50]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
+
     return (
         <>
             <Helmet>
@@ -17,123 +21,189 @@ const WhyYalico = () => {
 
             <Layout>
                 {/* Hero Section */}
-                <section className="pt-32 pb-20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background" />
+                <section className="pt-32 pb-32 relative overflow-hidden bg-primary/5">
+                    {/* Decorative Background Elements */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
+                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px] translate-y-1/4 -translate-x-1/4" />
+
+                    {/* Pattern Overlay */}
+                    <div className="absolute inset-0 opacity-[0.03]"
+                        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '40px 40px' }}
+                    />
 
                     <div className="container mx-auto px-4 relative z-10">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="text-center max-w-4xl mx-auto"
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="text-center max-w-5xl mx-auto"
                         >
-                            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-                                Our Origin Story
-                            </span>
-                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-6">
-                                The Divine <span className="gradient-text-accent">Defender</span>
+                            <motion.span
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-gold/20 to-primary/10 border border-gold/20 text-gold-dark text-sm font-bold tracking-wide mb-8"
+                            >
+                                <Sparkles className="w-4 h-4" />
+                                OUR SACRED ORIGIN
+                            </motion.span>
+
+                            <h1 className="text-5xl md:text-7xl lg:text-9xl font-display font-bold mb-8 leading-tight">
+                                The Divine <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-gold animate-gradient-x">Defender</span>
                             </h1>
-                            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                                Inspired by the <strong>Yali</strong>—the mythical guardian of South Indian temples—we stand as protectors of purity in every product we craft.
+
+                            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                                Inspired by the <strong>Yali</strong>—the mythical guardian of South Indian temples—we stand as <span className="text-primary font-semibold">protectors of purity</span> to guarding nature's essence.
                             </p>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* The Legend of Yali */}
-                <section className="py-20">
+                {/* The Legend of Yali - Content Rich Section */}
+                <section className="py-24 relative">
                     <div className="container mx-auto px-4">
-                        <div className="grid lg:grid-cols-2 gap-12 items-center">
-                            {/* Image Side */}
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            {/* Image Side with Premium Border */}
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="relative"
+                                transition={{ duration: 0.8 }}
+                                className="relative group"
                             >
-                                <div className="aspect-[4/5] rounded-[2rem] overflow-hidden">
-                                    <img
+                                {/* Gold Frame Effect */}
+                                <div className="absolute -inset-4 border-2 border-gold/30 rounded-[2.5rem] md:translate-x-4 md:translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+
+                                <div className="aspect-[4/5] rounded-[2rem] overflow-hidden relative shadow-2xl">
+                                    <motion.img
+                                        style={{ y: yVideo }}
                                         src={yaliImg}
                                         alt="Yali Statue"
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                        className="w-full h-full object-cover scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                                    {/* Glass Overlay Text */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.4 }}
+                                        className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white"
+                                    >
+                                        <div className="w-16 h-1 bg-gold mb-6 rounded-full" />
+                                        <h3 className="font-display font-bold text-4xl mb-3 text-gold">Simha Yali</h3>
+                                        <p className="text-white/90 text-lg font-light leading-relaxed">
+                                            The Fierce Protector. <br />
+                                            Part Lion. Part Elephant. Part Horse.
+                                        </p>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+
+                            {/* Content Side with Cards */}
+                            <div className="space-y-10">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="prose prose-lg text-muted-foreground"
+                                >
+                                    <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
+                                        Guardians of the <span className="gradient-text-accent">Temple</span>
+                                    </h2>
+                                    <p className="text-lg">
+                                        In the sacred architecture of South India, the <strong>Yali</strong> is ubiquitous. Carved into granite pillars, these mythical beasts are not mere decorations—they are <strong>Divine Defenders</strong>.
+                                    </p>
+                                    <p className="text-lg">
+                                        They stand guard at sanctum entrances, protecting the purity of the divine space. They symbolize the amalgamation of nature's greatest strengths:
+                                    </p>
+                                </motion.div>
+
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    {[
+                                        {
+                                            icon: Shield,
+                                            title: "Lion's Power",
+                                            desc: "Strength to protect what is sacred from impurity.",
+                                            color: "text-amber-600",
+                                            bg: "bg-amber-50"
+                                        },
+                                        {
+                                            icon: Combine,
+                                            title: "Elephant's Wisdom",
+                                            desc: "Intelligence to distinguish the pure from the artificial.",
+                                            color: "text-emerald-600",
+                                            bg: "bg-emerald-50"
+                                        }
+                                    ].map((item, i) => (
+                                        <motion.div
+                                            key={item.title}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.2 + (i * 0.1) }}
+                                            className="glass-card p-6 rounded-2xl border border-border/50 hover:border-gold/30 hover:shadow-lg transition-all duration-300 group"
+                                        >
+                                            <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                                                <item.icon className={`w-6 h-6 ${item.color}`} />
+                                            </div>
+                                            <h3 className="font-display font-bold text-xl mb-2">{item.title}</h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                {item.desc}
+                                            </p>
+                                        </motion.div>
+                                    ))}
                                 </div>
 
                                 <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="absolute bottom-8 left-8 right-8 text-white"
+                                    viewport={{ once: true }}
+                                    className="relative p-8 rounded-3xl bg-gradient-to-br from-primary to-primary-dark text-white overflow-hidden shadow-xl"
                                 >
-                                    <p className="font-display font-bold text-2xl mb-2">Simha Yali</p>
-                                    <p className="text-white/80 text-sm">
-                                        The Fierce Protector. Part Lion, Part Elephant. Guardian of the Sacred.
-                                    </p>
+                                    {/* Abstract shapes */}
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-fullblur-2xl -translate-y-1/2 translate-x-1/2" />
+
+                                    <div className="relative z-10">
+                                        <h3 className="text-2xl font-display font-bold mb-3 flex items-center gap-3">
+                                            <Sprout className="w-6 h-6 text-gold" />
+                                            Why "Yalico"?
+                                        </h3>
+                                        <p className="text-primary-foreground/90 font-medium leading-relaxed text-lg">
+                                            We named ourselves <strong>Yalico</strong> to honor this legacy. We have taken a vow to protect the <strong>purity of our food</strong>. We stand guard against chemicals and compromise. We are the defenders of the coconut's natural essence.
+                                        </p>
+                                    </div>
                                 </motion.div>
-                            </motion.div>
-
-                            {/* Content Side */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="space-y-8"
-                            >
-                                <div className="prose prose-lg text-muted-foreground">
-                                    <h2 className="text-3xl font-display font-bold text-foreground mb-6">
-                                        Guardians of the Temple
-                                    </h2>
-                                    <p>
-                                        In the sacred architecture of South India, the <strong>Yali</strong> (or <em>Vyala</em>) is ubiquitous. Carved into the granite pillars of temples, these mythical beasts—often depicted with the body of a lion, the trunk of an elephant, and the speed of a horse—are not mere decorations. They are <strong>Divine Defenders</strong>.
-                                    </p>
-                                    <p>
-                                        Known for their ferocity and fearlessness, Yalis stand guard at the entrance of sanctums, protecting the purity of the divine space from malevolent forces. They symbolize the amalgamation of nature's greatest strengths: the power of the lion, the intelligence of the elephant, and the agility of the horse.
-                                    </p>
-                                </div>
-
-                                <div className="grid sm:grid-cols-2 gap-6">
-                                    <div className="glass-card p-6 rounded-2xl">
-                                        <Shield className="w-8 h-8 text-primary mb-4" />
-                                        <h3 className="font-display font-bold text-lg mb-2">Simha Yali</h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            The Lion-faced guardian. A symbol of strength and protection, ensuring that nothing impure enters the sacred grounds.
-                                        </p>
-                                    </div>
-                                    <div className="glass-card p-6 rounded-2xl">
-                                        <Sprout className="w-8 h-8 text-gold mb-4" />
-                                        <h3 className="font-display font-bold text-lg mb-2">The Coconut</h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            The <em>Kalpavriksha</em> facing the protector. A symbol of sustenance, health, and the raw bounty of nature.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="glass-card p-8 rounded-3xl bg-primary/5 border-primary/20">
-                                    <h3 className="text-xl font-display font-bold text-primary mb-3">
-                                        Why "Yalico"?
-                                    </h3>
-                                    <p className="text-foreground/80 font-medium leading-relaxed">
-                                        We named ourselves <strong>Yalico</strong> to honor this legacy. Just as the Yali protects the temple, we have taken a vow to protect the <strong>purity of our food</strong>. We stand guard against chemicals, artificial additives, and compromise. We are the defenders of the coconut's natural essence.
-                                    </p>
-                                </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Values Showcase */}
-                <section className="py-20 bg-muted/30">
+                {/* Decorative Separator */}
+                <div className="w-full flex justify-center py-8 opacity-20">
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                </div>
+
+                {/* Promise Section */}
+                <section className="py-24 bg-gradient-to-b from-background to-muted/30">
                     <div className="container mx-auto px-4">
-                        <div className="max-w-3xl mx-auto text-center mb-16">
-                            <Sprout className="w-12 h-12 text-primary mx-auto mb-6" />
-                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="max-w-4xl mx-auto text-center"
+                        >
+                            <div className="w-20 h-20 mx-auto bg-gradient-to-br from-gold/20 to-primary/10 rounded-full flex items-center justify-center mb-8">
+                                <Sparkles className="w-10 h-10 text-gold-dark" />
+                            </div>
+                            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">
                                 More Than Just A Name
                             </h2>
-                            <p className="text-muted-foreground text-lg">
-                                Our name is a promise. A promise to protect the quality of your food, preserve the sanctity of our soil, and promote the health of our community.
+                            <p className="text-xl text-muted-foreground leading-relaxed">
+                                "Our name is a <span className="text-primary font-bold">promise</span>. A promise to protect the quality of your food, preserve the sanctity of our soil, and promote the health of our community."
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
             </Layout>
