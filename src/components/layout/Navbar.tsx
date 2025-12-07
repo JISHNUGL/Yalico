@@ -11,6 +11,7 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Products", path: "/products" },
   { name: "Global Reach", path: "/global" },
+  { name: "Why Yalico?", path: "/why-yalico" },
   { name: "Contact", path: "/contact" },
 ];
 
