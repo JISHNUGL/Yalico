@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
-import { Trees, Shield, Sprout, Combine } from "lucide-react";
-import storyBg from "@/assets/our story.jpg";
+import { Shield, Sprout } from "lucide-react";
+import yaliImg from "@/assets/Yali.jpg";
 
 const WhyYalico = () => {
     return (
@@ -53,7 +53,7 @@ const WhyYalico = () => {
                             >
                                 <div className="aspect-[4/5] rounded-[2rem] overflow-hidden">
                                     <img
-                                        src={storyBg}
+                                        src={yaliImg}
                                         alt="Yali Statue"
                                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                                     />
