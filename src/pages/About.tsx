@@ -173,55 +173,80 @@ const About = () => {
         </section>
 
         {/* Timeline */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
+        <section className="py-24 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03]"
+            style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '40px 40px' }}
+          />
+
+          <div className="container mx-auto px-4 relative">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-20"
             >
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Our <span className="gradient-text-accent">Timeline</span>
+              <span className="text-gold font-display font-medium tracking-wider uppercase mb-2 block">Our Growth</span>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                The <span className="gradient-text-accent">Timeline</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Key milestones in our journey to becoming a global leader in coconut products.
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                Tracing our roots from a humble idea to a global movement.
               </p>
             </motion.div>
 
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block" />
+            <div className="relative max-w-5xl mx-auto">
+              {/* Central Line - Desktop */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-border/40 -translate-x-1/2 hidden md:block rounded-full" />
+              <motion.div
+                className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-gold to-primary -translate-x-1/2 hidden md:block rounded-full origin-top"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+              />
 
-              <div className="space-y-12">
+              <div className="space-y-20">
                 {timeline.map((item, index) => (
                   <motion.div
                     key={item.year}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.7, delay: index * 0.2 }}
                     className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                       }`}
                   >
-                    <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                      <div className="glass-card p-6 rounded-2xl inline-block">
-                        <span className="text-4xl font-display font-bold gradient-text-accent">
-                          {item.year}
-                        </span>
-                        <h3 className="text-xl font-display font-semibold mt-2 mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground">{item.description}</p>
+                    {/* Content Card */}
+                    <div className={`flex-1 w-full ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                      <div className="group relative">
+                        <div className={`absolute -inset-0.5 bg-gradient-to-r from-gold/30 to-primary/30 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-500`} />
+                        <div className="glass-card p-8 rounded-2xl relative border border-white/10 hover:border-gold/30 transition-all duration-300">
+                          <span className="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary/20 to-gold/20 absolute -top-4 -right-4 select-none pointer-events-none">
+                            {item.year}
+                          </span>
+                          <span className="text-3xl font-display font-bold text-primary mb-2 block">
+                            {item.year}
+                          </span>
+                          <h3 className="text-xl font-display font-bold mb-3 text-foreground">
+                            {item.title}
+                          </h3>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Center dot */}
-                    <div className="w-4 h-4 rounded-full bg-primary shrink-0 relative z-10 hidden md:block">
-                      <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-25" />
+                    {/* Milestone Marker */}
+                    <div className="relative shrink-0 z-10">
+                      <div className="w-12 h-12 rounded-full bg-background border-4 border-gold shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center">
+                        <div className="w-4 h-4 rounded-full bg-primary" />
+                      </div>
                     </div>
 
-                    <div className="flex-1" />
+                    {/* Empty Space for layout balance */}
+                    <div className="flex-1 hidden md:block" />
                   </motion.div>
                 ))}
               </div>
