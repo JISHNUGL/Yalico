@@ -21,6 +21,17 @@ const stats = [
   { icon: Award, value: "3+", label: "Years Experience" },
 ];
 
+const shops = [
+  { name: "The Nilgiris Super Market", address: "103-107, THIRUVENKATA SWAMY ROAD, R.S. Puram, Coimbatore, Tamil Nadu 641002" },
+  { name: "Kaappi 2.0 (Eye Foundation)", address: "582A, D B ROAD, R S PURAM, COIMBATORE - 641002" },
+  { name: "Durai Store - Saravana Signature Suits", address: "262, Dr Ambedkar Rd, Velandipalayam, Coimbatore 641025" },
+  { name: "Stinos", address: "Barathiraja Complex, Near Angappa School, Raja Annamalai Road, Sai Baba Colony" },
+  { name: "3 Circle Refreshments", address: "Ponmudi village NH47, Near vijayamangalam toll gate, Perundurai, Tamil Nadu 638056" },
+  { name: "Aranganathar FPO Sales Kisok", address: "Uzhavar Sandai, Trichy Road - Singanallur. Coimbatore" },
+  { name: "PSG iTech Canteens", address: "Neelambur. Coimbatore" },
+  { name: "SRMV Canteens", address: "Perianaikanpalayam, Coimbatore" },
+];
+
 const Global = () => {
   return (
     <>
@@ -190,6 +201,49 @@ const Global = () => {
                       </span>
                     ))}
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Domestic Retail Partners */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+                Retail <span className="gradient-text">Partners</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Find our premium products at these select retail locations across Tamil Nadu.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {shops.map((shop, index) => (
+                <motion.div
+                  key={shop.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="glass-card p-6 rounded-2xl group hover:shadow-glow transition-all"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <MapPin className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                    {shop.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {shop.address}
+                  </p>
                 </motion.div>
               ))}
             </div>
