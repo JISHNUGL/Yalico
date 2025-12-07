@@ -238,18 +238,19 @@ const About = () => {
                     </span>
 
                     <div className="relative z-10">
-                      <div className={`w-16 h-16 rounded-2xl ${item.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                        <item.icon className={`w-8 h-8 text-transparent bg-clip-text bg-gradient-to-br ${item.color}`} />
+                      <div className="flex items-center justify-between mb-6">
+                        <div className={`p-3 rounded-full border-2 border-${item.color.split(' ')[1].replace('to-', '')}/20 shadow-lg`}>
+                          <item.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-muted-foreground/30 to-muted-foreground/10">
+                          {item.year}
+                        </span>
                       </div>
 
-                      <div className="inline-block px-3 py-1 rounded-full border border-primary/20 text-xs font-semibold tracking-wider uppercase mb-4 text-muted-foreground bg-background/50">
-                        {item.year} ERA
-                      </div>
-
-                      <h3 className="text-3xl font-display font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                      <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-primary transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>
                     </div>
