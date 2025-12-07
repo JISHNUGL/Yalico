@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -15,7 +16,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'system-ui', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,24 +62,25 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Yalico Brand Colors
-        sky: {
-          DEFAULT: "hsl(var(--sky-blue))",
-          light: "hsl(195 100% 70%)",
-          dark: "hsl(195 100% 45%)",
+        // Yalico Traditional South Indian Colors
+        // Yalico Traditional South Indian Colors - Agricultural Theme
+        agri: {
+          DEFAULT: "hsl(var(--green-agri))",
+          light: "hsl(140 50% 40%)",
+          dark: "hsl(140 60% 20%)",
         },
-        coconut: {
-          DEFAULT: "hsl(var(--coconut-brown))",
-          light: "hsl(25 35% 55%)",
-          dark: "hsl(25 45% 30%)",
+        gold: {
+          DEFAULT: "hsl(var(--gold-temple))",
+          light: "hsl(45 100% 60%)",
+          dark: "hsl(45 100% 40%)",
         },
-        lime: {
-          DEFAULT: "hsl(var(--lime-yellow))",
-          light: "hsl(68 100% 73%)",
-          dark: "hsl(68 100% 50%)",
+        leaf: {
+          DEFAULT: "hsl(var(--green-leaf))",
+          light: "hsl(85 50% 55%)",
+          dark: "hsl(85 60% 35%)",
         },
         tropical: {
-          DEFAULT: "hsl(var(--tropical-white))",
+          DEFAULT: "hsl(var(--tropical-cream))",
         },
         ocean: {
           DEFAULT: "hsl(var(--ocean-deep))",
@@ -162,5 +164,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

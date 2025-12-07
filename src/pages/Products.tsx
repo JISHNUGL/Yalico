@@ -112,7 +112,7 @@ const products = [
     name: "Coconut Energy Powder",
     tagline: "Coming Soon - Fuel Your Day",
     emoji: "⚡",
-    image: "from-lime-100 to-lime-200",
+    image: "from-gold-100 to-gold-200",
     description: "Future Product: Energizing coconut nutrition powder to fuel your day while being deliciously satisfying.",
     benefits: [
       "Energizing",
@@ -133,7 +133,7 @@ const products = [
 ];
 
 const Products = () => {
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "918300617317";
 
   const handleOrder = (productName: string) => {
     const message = encodeURIComponent(`Hi! I'm interested in ordering ${productName} from Yalico Foods.`);
@@ -169,7 +169,7 @@ const Products = () => {
       <Layout>
         {/* Hero */}
         <section className="pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-lime/5 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-background" />
 
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
@@ -178,7 +178,7 @@ const Products = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime-dark text-sm font-medium mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold-dark text-sm font-medium mb-6">
                 <Leaf className="w-4 h-4 inline mr-2" />
                 100% Organic Products
               </span>
@@ -251,7 +251,7 @@ const Products = () => {
                       <ul className="grid grid-cols-2 gap-2">
                         {product.benefits.map((benefit) => (
                           <li key={benefit} className="flex items-center gap-2 text-sm">
-                            <Check className="w-4 h-4 text-lime-dark shrink-0" />
+                            <Check className="w-4 h-4 text-gold-dark shrink-0" />
                             <span className="text-muted-foreground">{benefit}</span>
                           </li>
                         ))}
@@ -306,7 +306,7 @@ const Products = () => {
         </section>
 
         {/* Bulk Orders CTA */}
-        <section className="py-20 bg-gradient-to-r from-primary to-sky-dark">
+        <section className="py-20 bg-gradient-to-r from-primary to-primary-dark">
           <div className="container mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

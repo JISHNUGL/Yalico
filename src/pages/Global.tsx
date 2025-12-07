@@ -236,7 +236,7 @@ const Global = () => {
                 viewport={{ once: true }}
                 className="glass-card p-8 rounded-3xl"
               >
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-lime/10 flex items-center justify-center">
+                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center">
                   <span className="text-8xl">🚢</span>
                 </div>
               </motion.div>
@@ -245,7 +245,7 @@ const Global = () => {
         </section>
 
         {/* Become a Distributor CTA */}
-        <section className="py-20 bg-gradient-to-r from-secondary to-coconut-dark">
+        <section className="py-20 bg-gradient-to-r from-secondary to-primary-dark">
           <div className="container mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

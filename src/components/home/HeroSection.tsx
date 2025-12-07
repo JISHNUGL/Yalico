@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/new bg.jpg";
 
 import allProductsImg from "@/assets/all products.jpg";
 
@@ -35,14 +35,14 @@ export const HeroSection = () => {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute top-40 right-20 w-40 h-40 opacity-15"
         >
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-lime">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-gold">
             <ellipse cx="50" cy="50" rx="45" ry="20" transform="rotate(20 50 50)" />
           </svg>
         </motion.div>
 
         {/* Gradient Orbs */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-lime/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -138,7 +138,7 @@ export const HeroSection = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-lime/20 to-primary/20 rounded-full blur-2xl"
+                className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-gold/20 to-primary/20 rounded-full blur-2xl"
               />
 
               {/* Main Product Display */}
@@ -152,33 +152,7 @@ export const HeroSection = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Badges */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
-                transition={{ delay: 0.8, y: { duration: 3, repeat: Infinity } }}
-                className="absolute -left-4 top-1/4 glass-card px-4 py-3 rounded-2xl shadow-card"
-              >
-                <p className="text-sm font-semibold text-foreground">🌿 Organic</p>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
-                transition={{ delay: 1, y: { duration: 3.5, repeat: Infinity } }}
-                className="absolute -right-4 top-1/2 glass-card px-4 py-3 rounded-2xl shadow-card"
-              >
-                <p className="text-sm font-semibold text-foreground">🌍 Worldwide</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: [0, -12, 0] }}
-                transition={{ delay: 1.2, y: { duration: 4, repeat: Infinity } }}
-                className="absolute left-1/4 bottom-10 glass-card px-4 py-3 rounded-2xl shadow-card"
-              >
-                <p className="text-sm font-semibold text-foreground">⭐ Premium Quality</p>
-              </motion.div>
             </div>
           </motion.div>
         </div>

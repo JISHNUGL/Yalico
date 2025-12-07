@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Leaf, Heart, Target, Eye, Users, Award } from "lucide-react";
 
+import storyBg from "@/assets/our story.jpg";
+
 const timeline = [
   { year: "2022", title: "The Beginning", description: "Founded Yalico Foods under Connect's food division Vel Traders" },
   { year: "2023", title: "Product Launch", description: "Introduced India's first healthy, tasty, and crunchy coconut rolls" },
@@ -28,7 +30,13 @@ const About = () => {
       <Layout>
         {/* Hero Section */}
         <section className="pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background" />
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${storyBg})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background" />
+          </div>
 
           {/* Floating decorations */}
           <motion.div
@@ -36,7 +44,7 @@ const About = () => {
             transition={{ duration: 8, repeat: Infinity }}
             className="absolute top-40 right-20 w-32 h-32 opacity-20"
           >
-            <svg viewBox="0 0 100 100" className="w-full h-full fill-lime">
+            <svg viewBox="0 0 100 100" className="w-full h-full fill-gold">
               <ellipse cx="50" cy="50" rx="45" ry="20" transform="rotate(20 50 50)" />
             </svg>
           </motion.div>
@@ -104,7 +112,7 @@ const About = () => {
                 className="relative"
               >
                 <div className="glass-card p-8 rounded-3xl">
-                  <div className="aspect-video rounded-2xl bg-gradient-to-br from-lime/20 to-primary/20 flex items-center justify-center">
+                  <div className="aspect-video rounded-2xl bg-gradient-to-br from-gold/20 to-primary/20 flex items-center justify-center">
                     <span className="text-8xl">🌴</span>
                   </div>
                 </div>
@@ -150,8 +158,8 @@ const About = () => {
                 transition={{ delay: 0.2 }}
                 className="glass-card p-8 rounded-3xl"
               >
-                <div className="w-16 h-16 rounded-2xl bg-lime/20 flex items-center justify-center mb-6">
-                  <Eye className="w-8 h-8 text-lime-dark" />
+                <div className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mb-6">
+                  <Eye className="w-8 h-8 text-gold" />
                 </div>
                 <h3 className="text-2xl font-display font-bold mb-4">Our Vision</h3>
                 <p className="text-muted-foreground">

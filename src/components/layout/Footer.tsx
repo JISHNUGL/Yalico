@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
 
 import logo from "@/assets/logo.avif";
+import footerBg from "@/assets/footer new.jpg";
 
 const footerLinks = {
   company: [
@@ -34,10 +35,17 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-b from-background to-muted pt-20 pb-8 overflow-hidden">
+    <footer className="relative pt-20 pb-8 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${footerBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-background/95" />
+      </div>
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-leaf/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,10 +23,38 @@ const testimonials = [
     rating: 5,
     text: "For my child’s healthy daily routine, I trust Yalico’s Crispy Coconut Rolls. I recommend this nutritious choice for your children as well.",
   },
+  {
+    id: 3,
+    name: "L Blanton",
+    role: "Verified Customer",
+    location: "Dennison, TX",
+    image: "🥥",
+    rating: 5,
+    text: "Yalico's coconut snacks are a delightful blend of taste and health. Highly recommended for all snack lovers!",
+  },
+  {
+    id: 4,
+    name: "Brandon Davis",
+    role: "Verified Customer",
+    location: "Howe, TX",
+    image: "🥥",
+    rating: 5,
+    text: "I never knew coconut could taste this good! Yalico has truly transformed my snacking experience.",
+  },
 ];
 
 export const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        next();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, currentIndex]);
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -39,7 +67,7 @@ export const TestimonialsSection = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-lime/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-gold/5" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -62,7 +90,11 @@ export const TestimonialsSection = () => {
         </motion.div>
 
         {/* Testimonial Carousel */}
-        <div className="max-w-4xl mx-auto">
+        <div
+          className="max-w-4xl mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="relative">
             <AnimatePresence mode="wait">
               <motion.div
@@ -79,7 +111,7 @@ export const TestimonialsSection = () => {
                 {/* Rating */}
                 <div className="flex gap-1 mb-6">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-lime text-lime" />
+                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
                   ))}
                 </div>
 
