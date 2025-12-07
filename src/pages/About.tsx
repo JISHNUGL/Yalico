@@ -11,31 +11,35 @@ import imgFuture from "@/assets/coconut-pepper-roll.jpg"; // Placeholder
 const timeline = [
   {
     year: "2022",
-    title: "Roots of Tradition",
-    description: "Founded under Vel Traders, bringing the legacy of Pollachi's coconut farming to the world.",
-    image: storyBg,
-    color: "from-green-400 to-emerald-600"
+    title: "The Seeds of Tradition",
+    description: "Founded under Vel Traders, planting the first seeds of a legacy rooted in Pollachi's rich coconut farming heritage.",
+    icon: Leaf,
+    color: "from-emerald-500 to-green-700",
+    bg: "bg-emerald-50"
   },
   {
     year: "2023",
-    title: "The First Harvest",
-    description: "Launched India's first crunchy Coconut Rolls. A hit with families seeking healthy, tasty treats.",
-    image: img2023,
-    color: "from-amber-300 to-orange-500"
+    title: "The Golden Harvest",
+    description: "A year of creation. We launched India's first crunchy Coconut Rolls, bringing a golden taste to families everywhere.",
+    icon: Award,
+    color: "from-amber-400 to-orange-600",
+    bg: "bg-amber-50"
   },
   {
     year: "2024",
-    title: "Global Horizons",
-    description: "Taking 'Make in India' global. Expansion into international markets and new territories.",
-    image: img2024,
-    color: "from-blue-400 to-indigo-600"
+    title: "Crossing Oceans",
+    description: "Taking the 'Make in India' spirit to the world. A time of rapid expansion into new global territories.",
+    icon: Target,
+    color: "from-blue-500 to-indigo-700",
+    bg: "bg-blue-50"
   },
   {
     year: "Future",
-    title: "Boundless Innovation",
-    description: "Developing next-gen nutrition: Energy Powders and Spicy Pepper Rolls.",
-    image: imgFuture,
-    color: "from-purple-400 to-pink-600"
+    title: "The Innovation Horizon",
+    description: "Looking ahead to next-gen nutrition with Energy Powders and bold new flavors. The journey never ends.",
+    icon: Eye,
+    color: "from-purple-500 to-pink-700",
+    bg: "bg-purple-50"
   },
 ];
 
@@ -199,109 +203,60 @@ const About = () => {
           </div>
         </section>
 
-        {/* Timeline */}
+        {/* Legacy Grid - The New "Non-Timeline" Format */}
         <section className="py-24 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '40px 40px' }}
-          />
-
           <div className="container mx-auto px-4 relative">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="text-center mb-16"
             >
-              <span className="text-gold font-display font-medium tracking-wider uppercase mb-2 block">Our Growth</span>
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                The <span className="gradient-text-accent">Timeline</span>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
+                Our <span className="gradient-text-accent">Legacy</span> in the Making
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                Tracing our roots from a humble idea to a global movement.
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Not just dates on a calendar, but eras of dedication, growth, and flavor.
               </p>
             </motion.div>
 
-            {/* Visual Storyboard Timeline - Trendier & Attractive */}
-            <section className="py-32 relative overflow-hidden bg-muted/20">
-              {/* Background Elements */}
-              <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-                <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
-                <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gold/20 rounded-full blur-[100px]" />
-              </div>
-
-              <div className="container mx-auto px-4 relative">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              {timeline.map((item, index) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  key={item.year}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-center mb-24"
+                  transition={{ delay: index * 0.1 }}
+                  className="group relative"
                 >
-                  <h2 className="text-5xl md:text-7xl font-display font-bold mb-6">
-                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-gold">Odyssey</span>
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                    Every year is a new chapter in our story of purity and passion.
-                  </p>
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.color} rounded-[2rem] opacity-20 group-hover:opacity-60 blur transition duration-500`} />
+                  <div className="relative h-full bg-card/50 backdrop-blur-xl border border-white/10 p-8 lg:p-10 rounded-[2rem] overflow-hidden hover:bg-card/80 transition-colors">
+                    {/* Decorative Year Watermark */}
+                    <span className={`absolute -right-4 -bottom-8 text-[8rem] font-display font-black text-transparent bg-clip-text bg-gradient-to-br ${item.color} opacity-[0.08] select-none pointer-events-none`}>
+                      {item.year === "Future" ? "NEXT" : item.year}
+                    </span>
+
+                    <div className="relative z-10">
+                      <div className={`w-16 h-16 rounded-2xl ${item.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                        <item.icon className={`w-8 h-8 text-transparent bg-clip-text bg-gradient-to-br ${item.color}`} />
+                      </div>
+
+                      <div className="inline-block px-3 py-1 rounded-full border border-primary/20 text-xs font-semibold tracking-wider uppercase mb-4 text-muted-foreground bg-background/50">
+                        {item.year} ERA
+                      </div>
+
+                      <h3 className="text-3xl font-display font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
-
-                <div className="relative space-y-32">
-                  {/* Connecting Line (Dashed Curve simulation with straight line for mobile compatibility) */}
-                  <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent -translate-x-1/2 hidden md:block" />
-
-                  {timeline.map((item, index) => (
-                    <motion.div
-                      key={item.year}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-10%" }}
-                      transition={{ duration: 0.8 }}
-                      className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 relative ${index % 2 === 0 ? "" : "md:flex-row-reverse"
-                        }`}
-                    >
-                      {/* Timeline Date Marker */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-20 h-20 bg-background rounded-full border-4 border-muted shadow-xl">
-                        <span className="text-sm font-bold text-muted-foreground">{item.year}</span>
-                      </div>
-
-                      {/* Visual Content (Image) */}
-                      <div className="w-full md:w-1/2">
-                        <motion.div
-                          whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 1 : -1 }}
-                          className="group relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl"
-                        >
-                          <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-20 mix-blend-overlay z-10 transition-opacity group-hover:opacity-30`} />
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          {/* Year Overlay for Mobile */}
-                          <div className="absolute top-4 left-4 md:hidden bg-background/90 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                            {item.year}
-                          </div>
-                        </motion.div>
-                      </div>
-
-                      {/* Text Content */}
-                      <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                        <div className="relative inline-block">
-                          <span className={`absolute -top-12 opacity-10 text-9xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br ${item.color} select-none -z-10 ${index % 2 === 0 ? "right-0" : "left-0"}`}>
-                            {item.year}
-                          </span>
-                          <h3 className="text-4xl md:text-5xl font-display font-bold mb-6 text-foreground leading-tight">
-                            {item.title}
-                          </h3>
-                        </div>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </section>
+              ))}
+            </div>
           </div>
         </section>
 
